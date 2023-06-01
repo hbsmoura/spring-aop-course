@@ -21,7 +21,7 @@ public class SomeComponent {
         System.out.println(getClass() + ": Some method with one parameter: " + param);
     }
 
-    public void someMethodWithMultipleParameters(String param1, String param2) {
-        System.out.println(getClass() + ": Some method with one parameter: " + param1 + ", " + param2);
+    public void someMethodWithMultipleParameters(String param1, int param2) {
+        System.out.println(getClass() + ": Some method with two parameters: " + param1 + ", " + param2);
     }
 }

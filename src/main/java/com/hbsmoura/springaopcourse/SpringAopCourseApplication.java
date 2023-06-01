@@ -23,6 +23,6 @@ public class SpringAopCourseApplication implements CommandLineRunner {
 		component.someOtherMethod();
 		component.aThirdMethod();
 		component.someMethodWithOneParameter("One");
-		component.someMethodWithMultipleParameters("One", "Two");
+		component.someMethodWithMultipleParameters("One", 2);
 	}
 }
