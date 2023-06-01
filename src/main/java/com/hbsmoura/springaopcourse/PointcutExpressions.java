@@ -2,10 +2,8 @@ package com.hbsmoura.springaopcourse;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
 
 @Aspect
-@Component
 public class PointcutExpressions {
 
     @Pointcut("execution(void some*(..))")
