@@ -20,5 +20,9 @@ public class SpringAopCourseApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		component.someMethod();
+		component.someOtherMethod();
+		component.aThirdMethod();
+		component.someMethodWithOneParameter("One");
+		component.someMethodWithMultipleParameters("One", "Two");
 	}
 }

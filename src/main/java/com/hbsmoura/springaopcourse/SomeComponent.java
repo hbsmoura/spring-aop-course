@@ -6,6 +6,22 @@ import org.springframework.stereotype.Component;
 public class SomeComponent {
 
     public void someMethod() {
-        System.out.println(getClass() + ": Doing some stuff");
+        System.out.println(getClass() + ": Some method");
+    }
+
+    public void someOtherMethod() {
+        System.out.println(getClass() + ": Some other method");
+    }
+
+    public void aThirdMethod() {
+        System.out.println(getClass() + ": A third method");
+    }
+
+    public void someMethodWithOneParameter(String param) {
+        System.out.println(getClass() + ": Some method with one parameter: " + param);
+    }
+
+    public void someMethodWithMultipleParameters(String param1, String param2) {
+        System.out.println(getClass() + ": Some method with one parameter: " + param1 + ", " + param2);
     }
 }
