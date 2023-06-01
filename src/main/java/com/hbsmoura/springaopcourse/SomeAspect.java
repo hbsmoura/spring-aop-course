@@ -19,6 +19,10 @@ public class SomeAspect {
                 + Arrays.toString(joinPoint.getArgs()) +" <<<"
         );
 
+        if(joinPoint.getTarget() instanceof SomeComponent) {
+            System.out.println("Join point target is a SomeComponent instance");
+        }
+
         for(Object arg : joinPoint.getArgs()) {
             System.out.println(arg + (arg instanceof String ? " is a String" : " is not a String"));
         }
