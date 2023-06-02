@@ -1,10 +1,7 @@
 package com.hbsmoura.springaopcourse;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -49,6 +46,12 @@ public class SomeAspect {
     )
     void afterThrowingAdvice(JoinPoint joinPoint, Throwable exc) {
         System.out.println("Aspect exception: " + exc.getMessage());
+    }
+
+    @After("com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()")
+    void afterAdvice(JoinPoint joinPoint) {
+        // It does not have access over the return or the exception, only the join point
+        System.out.println(">>> After advice works like finally clause on java exceptions <<<");
     }
 
 }
