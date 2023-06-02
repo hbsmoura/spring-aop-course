@@ -36,6 +36,8 @@ public class SomeAspect {
     )
     void afterReturningSomeListAdvice(JoinPoint joinPoint, List<String> result){
         if (result instanceof List) {
+            // Be careful with modifications
+            result.set(0, "Not the item 1");
             System.out.println("Instance of List -> " + result);
         }
     }

@@ -4,6 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
+
 @SpringBootApplication
 public class SpringAopCourseApplication implements CommandLineRunner {
 
@@ -24,6 +26,8 @@ public class SpringAopCourseApplication implements CommandLineRunner {
 //		component.aThirdMethod();
 //		component.someMethodWithOneParameter("One");
 //		component.someMethodWithMultipleParameters("One", 2);
-		component.someListOfStrings();
+		List<String> someListOfStrings = component.someListOfStrings();
+		System.out.println(someListOfStrings);
+
 	}
 }
