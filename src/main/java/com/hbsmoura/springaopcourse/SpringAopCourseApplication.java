@@ -20,14 +20,18 @@ public class SpringAopCourseApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args) {
 //		component.someMethod();
 //		component.someOtherMethod();
 //		component.aThirdMethod();
 //		component.someMethodWithOneParameter("One");
 //		component.someMethodWithMultipleParameters("One", 2);
-		List<String> someListOfStrings = component.someListOfStrings();
-		System.out.println(someListOfStrings);
+//		List<String> someListOfStrings = component.someListOfStrings();
+		try {
+			component.someThrowingMethod();
+		} catch (RuntimeException ex) {
+			System.out.println("Class exception: " + ex.getMessage());
+		}
 
 	}
 }

@@ -31,4 +31,8 @@ public class SomeComponent {
     public List<String> someListOfStrings() {
         return Arrays.asList("Item 1", "Item 2", "Item3");
     }
+
+    public void someThrowingMethod() {
+        throw new RuntimeException("Some");
+    }
 }

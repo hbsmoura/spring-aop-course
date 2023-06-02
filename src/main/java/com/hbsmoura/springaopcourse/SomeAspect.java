@@ -2,6 +2,7 @@ package com.hbsmoura.springaopcourse;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -40,6 +41,14 @@ public class SomeAspect {
             result.set(0, "Not the item 1");
             System.out.println("Instance of List -> " + result);
         }
+    }
+
+    @AfterThrowing(
+            pointcut = "com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()",
+            throwing = "exc"
+    )
+    void afterThrowingAdvice(JoinPoint joinPoint, Throwable exc) {
+        System.out.println("Aspect exception: " + exc.getMessage());
     }
 
 }
