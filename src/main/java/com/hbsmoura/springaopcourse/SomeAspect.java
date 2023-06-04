@@ -1,10 +1,12 @@
 package com.hbsmoura.springaopcourse;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
 @Order(1)
 public class SomeAspect {
 
-    @Before("com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()")
+//    @Before("com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()")
     void beforeInitiateWithSomeAdvice(JoinPoint joinPoint) {
         System.out.println("\n>>> " + joinPoint.getSignature() +" args: "
                 + Arrays.toString(joinPoint.getArgs()) +" <<<"
@@ -28,10 +30,10 @@ public class SomeAspect {
         }
     }
 
-    @AfterReturning(
-            pointcut = "com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()",
-            returning = "result"
-    )
+//    @AfterReturning(
+//            pointcut = "com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()",
+//            returning = "result"
+//    )
     void afterReturningSomeListAdvice(JoinPoint joinPoint, List<String> result){
         if (result instanceof List) {
             // Be careful with modifications
@@ -40,18 +42,31 @@ public class SomeAspect {
         }
     }
 
-    @AfterThrowing(
-            pointcut = "com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()",
-            throwing = "exc"
-    )
+//    @AfterThrowing(
+//            pointcut = "com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()",
+//            throwing = "exc"
+//    )
     void afterThrowingAdvice(JoinPoint joinPoint, Throwable exc) {
         System.out.println("Aspect exception: " + exc.getMessage());
     }
 
-    @After("com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()")
+//    @After("com.hbsmoura.springaopcourse.PointcutExpressions.initiateWithSome()")
     void afterAdvice(JoinPoint joinPoint) {
         // It does not have access over the return or the exception, only the join point
         System.out.println(">>> After advice works like finally clause on java exceptions <<<");
+    }
+
+    // these bad guy is a mashup of before and after advices
+    @Around("execution(void someDelayedMethod())")
+    Object aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println(LocalDateTime.now());
+
+        // The method needs to be called here
+        Object proceed = pjp.proceed();
+
+        System.out.println(LocalDateTime.now());
+
+        return proceed;
     }
 
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class SomeComponent {
@@ -34,5 +35,15 @@ public class SomeComponent {
 
     public void someThrowingMethod() {
         throw new RuntimeException("Some");
+    }
+
+    public void someDelayedMethod() {
+        try {
+            TimeUnit.SECONDS.sleep(5L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Some delayed method");
     }
 }

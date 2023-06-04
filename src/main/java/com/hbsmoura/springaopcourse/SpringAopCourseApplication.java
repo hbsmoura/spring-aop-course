@@ -27,11 +27,8 @@ public class SpringAopCourseApplication implements CommandLineRunner {
 //		component.someMethodWithOneParameter("One");
 //		component.someMethodWithMultipleParameters("One", 2);
 //		List<String> someListOfStrings = component.someListOfStrings();
-		try {
-			component.someThrowingMethod();
-		} catch (RuntimeException ex) {
-			System.out.println("Class exception: " + ex.getMessage());
-		}
+//		component.someThrowingMethod();
+		component.someDelayedMethod();
 
 	}
 }
